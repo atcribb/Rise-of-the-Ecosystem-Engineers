@@ -146,61 +146,6 @@ View(reefdom_df)
 save(reefdom_df, file='reefdominance_phanerozoic_04-07-2024.RData')
 
 
-#=== relative abundance of reef builder groups (REE Classification) ===#
-variables <- c('stage', 'mid_ma', unique(all_reef_builders$REE_classification))
-reef_relabund <- as.data.frame(matrix(NA, nrow=length(phanero_stages), ncol=length(variables)))
-colnames(reef_relabund) <- variables
-reef_relabund$stage <- phanero_stages
-reef_relabund$mid_ma <- phanero_mids
-reef_relabund
-
-n.quota.reefs <- 250
-iter <- 1000
-
-for(i in 1:nrow(reef_relabund)){
-  
-  this.stage <- reef_relabund$stage[i]
-  this.stage.data <- subset(all_reef_builders, stage==this.stage)
-  max.samples <- nrow(this.stage.data)
-  
-  #set up temporary dataframe for subsampling
-  temp.results <- as.data.frame(matrix(NA, nrow=iter, ncol=length(unique(all_reef_builders$REE_classification))))
-  colnames(temp.results) <- unique(all_reef_builders$REE_classification)
-
-  
-  print(paste('on stage:', this.stage))
-  
-  for(j in 1:iter){
-    
-    #get 1500 random samples
-    row_idxs <- sample(max.samples, n.quota.reefs, replace=TRUE) 
-    subbed.data <- this.stage.data[row_idxs,] #pull out subsampled data based on those random rows
-    
-    tot.reefs <- nrow(subbed.data)
-    
-    for(k in 1:length(unique(all_reef_builders$REE_classification))){
-      
-      this.reef_builder <- unique(all_reef_builders$REE_classification)[k]
-      this.reef_builder.data <- subset(subbed.data, REE_classification==this.reef_builder)
-      n.this.reef_builder <- nrow(this.reef_builder.data)
-      prop.this.reef <- n.this.reef_builder/tot.reefs
-      
-      temp.results[j,this.reef_builder] <- prop.this.reef
-      
-    }
-    
-    mean.stage.results <- colMeans(temp.results, na.rm=TRUE)
-    reef_relabund[i,3:ncol(reef_relabund)] <- mean.stage.results
-    
-  }
-  
-}
-
-View(reef_relabund)
-save(reef_relabund, file='Output/reef_relativeabundance_28-11-2023.RData')
-
-
-
 
 
 
