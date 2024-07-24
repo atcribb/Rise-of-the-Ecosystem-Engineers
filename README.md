@@ -18,11 +18,11 @@ There are three datasets in <kbd>[Data](https://github.com/atcribb/Rise-of-the-E
 ## Analyses
 There are five main scripts in <kbd>[Analyses](https://github.com/atcribb/Rise-of-the-Ecosystem-Engineers/tree/main/Analyses)</kbd>:
 
-*``EEDominance_bioturbators.R`` - analyses for the dominance of bioturbators to produce Figure 1
-*``EERelabund_bioturbators_feeding.R`` - analyses to get the relative abundance of bioturbator feeding ecologies to produce Figure 2
-*``EERelabund_bioturbators_taxa.R`` - analyses to get the relative abundance of bioturbator phyla to produce Figure 3
-*``EEDominance_reefs.R`` - analyses for the dominance of reef-builders to produce Figure 4
-*``EERelabund_reefs.R`` - analyses to get the relative abundance of reef-builder groups to produce Figure 5
+* ``EEDominance_bioturbators.R`` - analyses for the dominance of bioturbators to produce Figure 1
+* ``EERelabund_bioturbators_feeding.R`` - analyses to get the relative abundance of bioturbator feeding ecologies to produce Figure 2
+* ``EERelabund_bioturbators_taxa.R`` - analyses to get the relative abundance of bioturbator phyla to produce Figure 3
+* ``EEDominance_reefs.R`` - analyses for the dominance of reef-builders to produce Figure 4
+* ``EERelabund_reefs.R`` - analyses to get the relative abundance of reef-builder groups to produce Figure 5
 
 Additionally, there are versions of ``EEDominance_bioturbators.R`` and ``EEDominance_reefs.R`` specific to shallow, deep, siliciclastic, and carbonate facies in the <kbd>[within environments](https://github.com/atcribb/Rise-of-the-Ecosystem-Engineers/tree/main/Analyses/within_environments)</kbd> folder. These will produce the output files needed for Supplementary Figures 1 and 2 for bioturbators and Supplementary Figures 4 and 5 for reef-builders.
 
@@ -33,7 +33,7 @@ The <kbd>[Output](https://github.com/atcribb/Rise-of-the-Ecosystem-Engineers/tre
 ## Figures
 Finally, there are four scripts in <kbd>[Figures](https://github.com/atcribb/Rise-of-the-Ecosystem-Engineers/tree/main/Figures)</kbd>:
 
-*``PlottingOutput_Bioturbator_Dominance.R`` – generates Figure 1 and the within-environment results for Supplementary Figures 1 and 2
-*``PlottingOutput_Bioturbator_RelativeAbundance.R`` - generates the relative abundance figures for phyla and feeding ecologies in Figures 2 and 3, respectively
-*``PlottingOutput_Reef_Dominance.R`` - generates Figure 4, the within-environment results for Supplementary Figures 4 and 5, and contains the brief (raw) analysis and plotting output for Supplementary Figure 3
-*``PlottingOutput_Reef_RelativeAbundance.R`` - generates the relative abundance figures for reef-builder groups in Figure 5
+* ``PlottingOutput_Bioturbator_Dominance.R`` – generates Figure 1 and the within-environment results for Supplementary Figures 1 and 2
+* ``PlottingOutput_Bioturbator_RelativeAbundance.R`` - generates the relative abundance figures for phyla and feeding ecologies in Figures 2 and 3, respectively
+* ``PlottingOutput_Reef_Dominance.R`` - generates Figure 4, the within-environment results for Supplementary Figures 4 and 5, and contains the brief (raw) analysis and plotting output for Supplementary Figure 3
+* ``PlottingOutput_Reef_RelativeAbundance.R`` - generates the relative abundance figures for reef-builder groups in Figure 5
