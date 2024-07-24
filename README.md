@@ -3,6 +3,8 @@ Analyses associated with manuscript "How to engineer a habitable planet: The ris
 
 Corresponding author: A.T.Cribb@soton.ac.uk
 
+![Static Badge](https://img.shields.io/badge/under%20construction-FCA311) ![Static Badge](https://img.shields.io/badge/in%20revision-FB6F92)
+
  <i><b> This repository is updated for the most recent round of revision in Palaeontology. Pleaes do not use any data files or R scripts prior to publication without consulting A Cribb at A.T.Cribb@soton.ac.uk! </i></b>
 
 This repository contains all data and R scripts needed to reproduce the analyses and figures in the manuscript main text and supplementary materials. You can either run the analyses and generate new Output files, or you may use the Output files already in the repository that are used to generate the published manuscript. Note that due to the subsampling procedures involving a random number generator, your results may vary slightly from the published results. If you download this repository, set it as your working directory and everything should run smoothly.
