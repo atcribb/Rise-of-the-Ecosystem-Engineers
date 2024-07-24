@@ -1,25 +1,15 @@
 #Author: Dr. Alison T. Cribb, University of Southampton 
-#Created: 7 September 2023
-#Last edited: 4 July 2024
-
-#Summary: Dominance of reef environments, or "how common are reef-engineered environments?"
-#         First: Proportion of environments that contain reefs, per stage
-#         Second: In reef engineneered formations, what proportion of occurrences are reef-builders?
-#         Third: What is the dominant reef builder taxa in each stage?
 
 library(divDyn)
-data(stages)
+data("stages", package="divDyn")
 
 #===================================================================#
 #===================================================================#
-#setwd("~/Desktop/Manucripts/Palass_ecosystemengineering")
 
 #=== load data ===#
-#load('Data/Phanerozoic_clean_final.RData')
-load('Phanerozoic_clean_final.RData')
+load('Data/Phanerozoic_clean_final.RData')
 all_data <- subset(all_data, !(is.na(formation)))
-#load('Data/Reef_Ecosystem_Engineers_final.RData')
-load('Reef_Ecosystem_Engineers_final.RData')
+load('Data/Reef_Ecosystem_Engineers_final.RData')
 all_reef_builders <- subset(all_reef_builders, !(is.na(formation)))
 phanero_stages <- stages$stage[4:95]
 phanero_mids <- stages$mid[4:95]
@@ -42,6 +32,7 @@ head(reefdom_df)
 
 iter <- 1000
 n.quota <- 750 
+occs.n.form <- 20
 n.quota.reefs <- 250 
 
 #=== analysis - how common are reef engineered environments? ===#
@@ -94,20 +85,19 @@ for(i in 1:nrow(reefdom_df)){
     occs.tot.temp <- rep(NA, length(subbed.ecoeng.formations))
       for(k in 1:length(subbed.ecoeng.formations)){
         this.formation.data <- subset(subbed.data, formation==subbed.ecoeng.formations[k]) #for each formation
-        this.formation.ecoengs.data <- subset(this.formation.data, genus %in% reef_EE_genera) #identify ecosystem engineers 
+        
+        #subsample formation data to 20 occurrences per formation
+        form_row_idxs <- sample(nrow(this.formation.data), occs.n.form, replace=TRUE)
+        this.formation.subbed <- this.formation.data[form_row_idxs,]
+        
+        this.formation.ecoengs.data <- subset(this.formation.subbed, genus %in% reef_EE_genera) #identify ecosysteme engineers 
         this.formation.ecoengs <- nrow(this.formation.ecoengs.data) #how many are there?
-        this.formation.tot <- nrow(this.formation.data) #how many total occurrences?
+        this.formation.tot <- nrow(this.formation.subbed) #how many total occurrences?
         this.formation.prop <- this.formation.ecoengs/this.formation.tot #proportion of occurrences that are ecosystem engineers?
         prop.ecoengs.temp[k] <- this.formation.prop #save 
         occs.tot.temp[k] <- this.formation.tot
         ecoengs.tot.occs.temp[k] <- this.formation.ecoengs
       }
-    
-    # engineered.data <- subset(subbed.data, formation %in% reef_formations) #all data in an identified reef formation
-    # engineered.tot.occs <- length(engineered.data$genus)
-    # engineered.engineers <- subset(engineered.data, genus %in% reef_EE_genera) #subset out just the ecosystem engineers
-    # engineered.engineers.occs <- length(engineered.engineers$genus)
-    # prop.engineers <- engineered.engineers.occs/engineered.tot.occs #and the proportion 
     
     n_occs_tot_temp[j] <- mean(occs.tot.temp, na.rm=TRUE)
     n_occs_EEs[j] <- mean(ecoengs.tot.occs.temp, na.rm=TRUE)
@@ -142,11 +132,5 @@ for(i in 1:nrow(reefdom_df)){
   }
 }
 
-View(reefdom_df)
-save(reefdom_df, file='reefdominance_phanerozoic_04-07-2024.RData')
 
-
-
-
-
-
+save(reefdom_df, file='reef_dominance.RData')

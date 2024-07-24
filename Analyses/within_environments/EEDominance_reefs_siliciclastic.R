@@ -1,23 +1,15 @@
 #Author: Dr. Alison T. Cribb, University of Southampton 
-#Created: 7 September 2023
-#Last edited: 5 July 2024
-
-#Summary: Dominance of reef environments, only shallow marine
-
 library(divDyn)
 data("stages", package="divDyn")
-data(keys)
+data("keys", package="divDyn")
 
 #===================================================================#
 #===================================================================#
-#setwd("~/Desktop/Manucripts/Palass_ecosystemengineering")
 
 #=== load data ===#
-#load('Data/Phanerozoic_clean_final.RData')
-load('Phanerozoic_clean_final.RData')
+load('Data/Phanerozoic_clean_final.RData')
 all_data <- subset(all_data, !(is.na(formation)))
-#load('Data/Reef_Ecosystem_Engineers_final.RData')
-load('Reef_Ecosystem_Engineers_final.RData')
+load('Data/Reef_Ecosystem_Engineers_final.RData')
 all_reef_builders <- subset(all_reef_builders, !(is.na(formation)))
 phanero_stages <- stages$stage[4:95]
 phanero_mids <- stages$mid[4:95]
@@ -152,4 +144,4 @@ for(i in 1:nrow(reefdom_df)){
 }
 
 reefdom_sili_df <- reefdom_df
-save(reefdom_sili_df, file='reefdominance_siliciclastic_05-07-2024.RData')
+save(reefdom_sili_df, file='reef_dominance_siliciclastic.RData')

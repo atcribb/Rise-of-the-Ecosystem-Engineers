@@ -14,13 +14,10 @@ library(deeptime)
 
 library(tidyr)
 
-#=================#
-setwd("~/Desktop/Manucripts/Palass_ecosystemengineering")
-
 #======== feeding modes ==========#
 #=== load data ===#
 #proportion of genera that are ecosystem engineers in each formation
-load("Output/infauna_feeding_relativeabundance_04-07-2024.RData")
+load("Output/bioturbator_feeding_relativeabundance.RData")
 
 feeding_relabund_df <- as.data.frame(pivot_longer(infauna_feeding_relabund, cols=3:ncol(infauna_feeding_relabund),
                                                   names_to='feeding mode', values_to='proportion'))
@@ -53,11 +50,8 @@ relabund_feeding <- ggplot(data=feeding_relabund_df) +
         panel.border=element_rect(colour='black', fill=NA, size=1))
 relabund_feeding
 
-ggsave(filename='Output/Figures/Revision1/Figure2_bioturbators_feeding_relativeabundance.pdf', plot=relabund_feeding,
-       width=13, height=4)
-
-#======== taxonomic gorups =========#
-load("Output/infauna_taxa_relativeabundance_04-07-2024.RData")
+#======== taxonomic groups =========#
+load("Output/bioturbator_taxa_relativeabundance.RData")
 
 taxa_relabund_df <- as.data.frame(pivot_longer(infauna_taxa_relabund, cols=3:ncol(infauna_taxa_relabund),
                                                names_to='phylum', values_to='proportion'))
@@ -81,11 +75,3 @@ relabund_infauna <- ggplot(data=taxa_relabund_df) +
         axis.title.x=element_blank(),
         panel.border=element_rect(colour='black', fill=NA, size=1))
 relabund_infauna
-
-ggsave(filename='Output/Figures/Revision1/Figure3_bioturbators_taxa_relativeabundance.pdf', plot=relabund_infauna,
-       width=13, height=4)
-
-
-
-
-

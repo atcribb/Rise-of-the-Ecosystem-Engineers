@@ -13,11 +13,9 @@ paleo_mids <- stages$mid[4:51]
 library(deeptime)
 library(tidyr)
 
-#=================#
-setwd("~/Desktop/Manucripts/Palass_ecosystemengineering")
-
+#===== relative abundance of reef-builders ====#
 #=== load data ===#
-load('Output/reef_relativeabundance_04-07-2024.RData')
+load('Output/reef_relativeabundance.RData')
 
 reef_relabund_df <- as.data.frame(pivot_longer(reef_relabund, cols=3:ncol(reef_relabund), 
                                                names_to='reef_builder', values_to='proportion'))
@@ -25,6 +23,7 @@ table(reef_relabund_df$reef_builder)
 
 head(reef_relabund_df)
 
+#Rename things to remove underscores... just aesthetic 
 reef_relabund_df$`reef builder` <- rep(NA, nrow(reef_relabund_df))
 reef_relabund_df$`reef builder`[which(reef_relabund_df$reef_builder=='Glass_sponges')] <- 'Glass sponges'
 reef_relabund_df$`reef builder`[which(reef_relabund_df$reef_builder=='Archaeocyaths')] <- 'Archaeocyathids'
@@ -78,5 +77,3 @@ relabund_builders <- ggplot(data=reef_relabund_df) +
         panel.border=element_rect(colour='black', fill=NA, size=1))
 relabund_builders
 
-ggsave(filename='Output/Figures/Revision1/Figure5_reefs_relativeabundance.pdf', plot=relabund_builders,
-       width=13, height=4)

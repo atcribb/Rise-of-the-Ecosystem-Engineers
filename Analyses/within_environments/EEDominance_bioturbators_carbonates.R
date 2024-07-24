@@ -1,11 +1,4 @@
 #Author: Dr. Alison T. Cribb, University of Southampton 
-#Created: 4 December 2023
-#Last edited: 4 July 2024
-
-#Summary: Dominance of bioturbatored environments/environments with infauna, or "how common are infauna-engineered environments?"
-#         First: Proportion of environments (formations) that contain infauna, per stage
-#         Second: In infauna engineneered formations, what proportion of occurrences are infauna?
-#         Third: What is the dominant infauna class and infauna feeding behaviour in each stage?
 
 library(divDyn)
 data("stages", package="divDyn")
@@ -13,11 +6,9 @@ data(keys)
 
 #===================================================================#
 #===================================================================#
-#setwd("~/Desktop/Manucripts/Palass_ecosystemengineering")
 
 #=== load data ===#
-#load('Data/Phanerozoic_clean_final.RData')
-load('Phanerozoic_clean_final.RData')
+load('Data/Phanerozoic_clean_final.RData')
 all_data <- subset(all_data, !is.na(formation))
 
 #assign environmental variables
@@ -200,6 +191,6 @@ for(i in 1:nrow(infaunadom_df)){
 }
 
 infaunadom_carbs_df <- infaunadom_df
-save(infaunadom_carbs_df, file='infauna_carbonate_dominance_05-07-2024.RData')
+save(infaunadom_carbs_df, file='bioturbator_carbonate_dominance.RData')
 
 

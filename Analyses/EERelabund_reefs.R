@@ -1,25 +1,16 @@
 #Author: Dr. Alison T. Cribb, University of Southampton 
-#Created: 7 September 2023
-#Last edited: 4 July 2024
-
-#Summary: Dominance of reef environments, or "how common are reef-engineered environments?"
-#         First: Proportion of environments that contain reefs, per stage
-#         Second: In reef engineneered formations, what proportion of occurrences are reef-builders?
-#         Third: What is the dominant reef builder taxa in each stage?
 
 library(divDyn)
-data(stages)
+data("stages", package="divDyn")
 
 #===================================================================#
 #===================================================================#
-#setwd("~/Desktop/Manucripts/Palass_ecosystemengineering")
 
 #=== load data ===#
-#load('Data/Phanerozoic_clean_final.RData')
-load('Phanerozoic_clean_final.RData')
+load('Data/Phanerozoic_clean_final.RData')
 all_data <- subset(all_data, !(is.na(formation)))
-#load('Data/Reef_Ecosystem_Engineers_final.RData')
-load('Reef_Ecosystem_Engineers_final.RData')
+all_data <- subset(all_data, !(is.na(formation)))
+load('Data/Reef_Ecosystem_Engineers_final.RData')
 all_reef_builders <- subset(all_reef_builders, !(is.na(formation)))
 phanero_stages <- stages$stage[4:95]
 phanero_mids <- stages$mid[4:95]
@@ -81,5 +72,4 @@ for(i in 1:nrow(reef_relabund)){
   
 }
 
-View(reef_relabund)
-save(reef_relabund, file='reef_relativeabundance_04-07-2024.RData')
+save(reef_relabund, file='reef_relativeabundance.RData')
