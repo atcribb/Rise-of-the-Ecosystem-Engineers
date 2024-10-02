@@ -1,5 +1,7 @@
 # How to engineer a habitable planet: The rise of marine ecosystem engineers through the Phanerozoic
-Analyses associated with manuscript "How to engineer a habitable planet: The rise of marine ecosystem engineers through the Phanerozoic" by Alison Cribb and Simon Darroch
+Analyses associated with manuscript "How to engineer a habitable planet: The rise of marine ecosystem engineers through the Phanerozoic" by Alison Cribb and Simon Darroch in Palaeontology
+
+<a href="https://doi.org/10.1111/pala.12726"><img src="https://img.shields.io/badge/DOI-10.1111%2Fpala.1272-blue"></a>
 
 Corresponding author: A.T.Cribb@soton.ac.uk
 
